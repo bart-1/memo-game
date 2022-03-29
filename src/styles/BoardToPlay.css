@@ -1,0 +1,33 @@
+div.game-board {
+  display: grid;
+  gap: 0.5vw;
+  padding: 0.5vw;
+  background-color: darkblue;
+  margin: auto;
+}
+div#s {
+  grid-template-columns: 8vw 8vw 8vw 8vw ;
+  width: fit-content;
+}
+div#m {
+  grid-template-columns: 8vw 8vw 8vw 8vw 8vw 8vw ;
+  width: fit-content;
+  
+}
+div#l {
+  grid-template-columns: 8vw 8vw 8vw 8vw 8vw 8vw 8vw 8vw ;
+  width: fit-content;
+  
+}
+
+div.game-block {
+  display: flex;
+  background-color: blueviolet;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-block-icon {
+  color: aliceblue;
+}
+
