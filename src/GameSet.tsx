@@ -4,18 +4,19 @@ export type GameSize = 16 | 24 | 48;
 interface GameSetProps {
   setPattern: (size: GameSize) => void;
   setGameOn: CallableFunction;
+  setGameOff: CallableFunction;
 }
 
-const GameSet = ({ setPattern, setGameOn }: GameSetProps) => {
+const GameSet = ({ setPattern, setGameOn, setGameOff }: GameSetProps) => {
   const [gameSize, setGameSize] = useState<GameSize>(16);
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setGameOn(true);
+    setGameOn();
   };
 
   useEffect(() => {
-    setGameOn(false)
+    setGameOff()
     setPattern(gameSize);
   }, [gameSize]);
 

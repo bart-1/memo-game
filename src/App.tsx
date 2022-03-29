@@ -14,7 +14,8 @@ function App() {
         
       <GameSet
         setPattern={(size) => setPattern(size)}
-        setGameOn={() => setGameOn()}
+        setGameOn={() => setGameOn(true)}
+        setGameOff={() => setGameOn(false)}
       />
       <ScoreBoard />
       <BoardToPlay numberOfBlocks={pattern}/>
