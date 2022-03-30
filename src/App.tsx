@@ -10,8 +10,6 @@ function App() {
 
   return (
     <div className="App">
-     
-        
       <GameSet
         setPattern={(size) => setPattern(size)}
         setGameOn={() => setGameOn(true)}

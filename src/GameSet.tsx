@@ -1,6 +1,7 @@
 import react, { useEffect, useState, FormEvent } from "react";
 
 export type GameSize = 16 | 24 | 48;
+
 interface GameSetProps {
   setPattern: (size: GameSize) => void;
   setGameOn: CallableFunction;

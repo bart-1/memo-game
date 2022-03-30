@@ -28,6 +28,7 @@ import {
   RiSailboatFill,
   RiEarthFill,
   RiMailFill,
+  RiQuestionMark,
 } from "react-icons/ri";
 
 
@@ -62,3 +63,5 @@ export const gameIconPack = [
   RiEarthFill,
   RiMailFill,
 ];
+
+export const QuestionMark = RiQuestionMark;
