@@ -11,7 +11,7 @@ type BoardSize = "s" | "m" | "l";
 
 type IconsArray = IconType[];
 
-type BlocksObjectsArray = { id: number; name: string }[];
+export type BlocksObjectsArray = { id: number; name: string }[];
 
 const shuffleArrayElements = (arr: IconsArray) => {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -37,8 +37,10 @@ const BoardToPlay = ({ numberOfBlocks }: BoardToPlayProps) => {
   const [clickedBlock, setClickedBlock] = useState("");
   const [blockPair, setBlockPair] = useState<BlocksObjectsArray>([]);
   const [uncovered, setUncovered] = useState<BlocksObjectsArray>([]);
+  const [endGame, setEndGame] = useState(false);
 
   useEffect(() => {
+    setEndGame(false);
     switch (true) {
       case numberOfBlocks === 16:
         setBoardSize("s");
@@ -57,24 +59,25 @@ const BoardToPlay = ({ numberOfBlocks }: BoardToPlayProps) => {
   useEffect(() => {
     setPreparedDeck(prepareDeckOfBlocks(gameIconPack, numberOfBlocks));
   }, [boardSize]);
+
   useEffect(() => {
-    if (uncovered.length * 2 == numberOfBlocks) {
+    if (uncovered.length * 2 === numberOfBlocks) {
       setBlockPair([]);
       setUncovered([]);
-      setBoardSize("s");
+      setEndGame(true);
     }
   }, [uncovered]);
 
   useEffect(() => {
     if (
-      blockPair.length == 2 &&
+      blockPair.length === 2 &&
       blockPair[0].name === blockPair[1].name &&
       blockPair[0].id !== blockPair[1].id
     ) {
       setUncovered((prevState) => prevState.concat(blockPair[0]));
       setBlockPair([]);
     } else if (blockPair.length == 2 && blockPair[0] !== blockPair[1])
-      setBlockPair([]);
+      setBlockPair((prevState) => prevState.slice(1));
   }, [blockPair]);
 
   const handleBlockClick = (iconName: string, index: number) => {
@@ -92,7 +95,7 @@ const BoardToPlay = ({ numberOfBlocks }: BoardToPlayProps) => {
         key={index}
         onClick={() => handleBlockClick(icon.name, index)}>
         <IconContext.Provider
-          value={{ className: "game-block-icon", size: "8 vh" }}>
+          value={{ className: "game-block-icon", size: "6vw" }}>
           {clickedBlock === icon.name + index ||
           uncovered.find((element) => element.name === icon.name) ? (
             <Icon />
@@ -107,7 +110,7 @@ const BoardToPlay = ({ numberOfBlocks }: BoardToPlayProps) => {
   return (
     <>
       <div className="game-board" id={boardSize}>
-        {bloksGenerator}
+        {endGame ? <p>WIN!!</p> : bloksGenerator}
       </div>
     </>
   );

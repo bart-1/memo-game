@@ -6,14 +6,11 @@ import ScoreBoard from "./ScoreBoard";
 
 function App() {
   const [pattern, setPattern] = useState<GameSize>(16);
-  const [gameOn, setGameOn] = useState(false);
 
   return (
     <div className="App">
       <GameSet
         setPattern={(size) => setPattern(size)}
-        setGameOn={() => setGameOn(true)}
-        setGameOff={() => setGameOn(false)}
       />
       <ScoreBoard />
       <BoardToPlay numberOfBlocks={pattern}/>

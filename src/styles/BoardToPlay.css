@@ -4,20 +4,19 @@ div.game-board {
   padding: 0.5vw;
   background-color: darkblue;
   margin: auto;
+  border-radius: 10px;
 }
 div#s {
-  grid-template-columns: 8vw 8vw 8vw 8vw ;
+  grid-template-columns: 6vw 6vw 6vw 6vw;
   width: fit-content;
 }
 div#m {
-  grid-template-columns: 8vw 8vw 8vw 8vw 8vw 8vw ;
+  grid-template-columns: 6vw 6vw 6vw 6vw 6vw 6vw;
   width: fit-content;
-  
 }
 div#l {
-  grid-template-columns: 8vw 8vw 8vw 8vw 8vw 8vw 8vw 8vw ;
+  grid-template-columns: 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw;
   width: fit-content;
-  
 }
 
 div.game-block {
@@ -25,9 +24,10 @@ div.game-block {
   background-color: blueviolet;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .game-block-icon {
   color: aliceblue;
 }
-
