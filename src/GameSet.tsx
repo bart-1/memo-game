@@ -1,4 +1,4 @@
-import react, { useEffect, useState, FormEvent, useCallback } from "react";
+import react, { useEffect, useState } from "react";
 
 export type GameSize = 16 | 24 | 48;
 

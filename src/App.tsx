@@ -4,6 +4,8 @@ import BoardToPlay from "./BoardToPlay";
 import GameSet, { GameSize } from "./GameSet";
 import ScoreBoard from "./ScoreBoard";
 
+
+
 function App() {
   const [pattern, setPattern] = useState<GameSize>(16);
 
@@ -12,7 +14,7 @@ function App() {
       <GameSet
         setPattern={(size) => setPattern(size)}
       />
-      <ScoreBoard />
+      {/* <ScoreBoard /> */}
       <BoardToPlay numberOfBlocks={pattern}/>
     </div>
   );
