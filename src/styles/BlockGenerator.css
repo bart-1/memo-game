@@ -3,3 +3,16 @@
   width: auto;
   color: aqua;
 }
+
+div.game-block {
+  display: flex;
+  background-color: blueviolet;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.game-block-icon {
+  color: aliceblue;
+}

@@ -1,0 +1,9 @@
+div.win-board {
+    font-size: x-large;
+    color: rgb(98, 0, 255);
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+}

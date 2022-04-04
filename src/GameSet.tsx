@@ -1,18 +1,18 @@
-import react, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
+import "./styles/GameSet.css";
 export type GameSize = 16 | 24 | 48;
 
 interface GameSetProps {
   setPattern: (size: GameSize) => void;
+  play: CallableFunction;
 }
 
-const GameSet = ({ setPattern }: GameSetProps) => {
+const GameSet = ({ setPattern, play }: GameSetProps) => {
   const [gameSize, setGameSize] = useState<GameSize>(16);
-  const [resetGame, setResetGame] = useState(false);
 
   useEffect(() => {
     setPattern(gameSize);
-  }, [gameSize, resetGame]);
+  }, [gameSize]);
 
   return (
     <>
@@ -39,7 +39,7 @@ const GameSet = ({ setPattern }: GameSetProps) => {
           onChange={() => setGameSize(48)}
           checked={gameSize === 48}
         />
-        <button onClick={()=>setResetGame(prevState=> !prevState)}>Play!</button>
+        <button onClick={() => play()}>Play!</button>
       </div>
     </>
   );

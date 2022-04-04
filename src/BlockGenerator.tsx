@@ -12,6 +12,7 @@ interface BlockGeneratorProps {
   handleBlockClick: (iconName: string, index: number) => void;
   boardSize: string;
   clickedBlock: string;
+  play: boolean;
 }
 
 const shuffleArrayElements = (arr: IconType[]) => {
@@ -38,12 +39,13 @@ const BlockGenerator = ({
   clickedBlock,
   boardSize,
   handleBlockClick,
+  play,
 }: BlockGeneratorProps) => {
   const [preparedDeck, setPreparedDeck] = useState<IconType[]>([QuestionMark]);
 
   useEffect(() => {
     setPreparedDeck(prepareDeckOfBlocks(gameIconPack, numberOfBlocks));
-  }, [boardSize]);
+  }, [boardSize, play]);
 
   const bloksGenerator = preparedDeck.map((icon, index) => {
     const Icon = icon;

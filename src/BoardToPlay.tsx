@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import BlockGenerator, { BlockObject } from "./BlockGenerator";
 import { GameSize } from "./GameSet";
 import "./styles/BoardToPlay.css";
+import Win from "./Win";
 
 interface BoardToPlayProps {
   numberOfBlocks: GameSize;
+  play: boolean;
 }
 
-type BoardSize = "s" | "m" | "l";
+export type BoardSize = "s" | "m" | "l";
 
 export type BlocksObjectsArray = { id: number; name: string }[];
 
-const BoardToPlay = ({ numberOfBlocks }: BoardToPlayProps) => {
+const BoardToPlay = ({ numberOfBlocks, play }: BoardToPlayProps) => {
   const [boardSize, setBoardSize] = useState<BoardSize>("s");
   const [clickedBlock, setClickedBlock] = useState("");
   const [blockPair, setBlockPair] = useState<BlockObject[]>([]);
@@ -35,9 +37,13 @@ const BoardToPlay = ({ numberOfBlocks }: BoardToPlayProps) => {
   }, [numberOfBlocks]);
 
   useEffect(() => {
+    setEndGame(false);
+    setBlockPair([]);
+    setUncovered([]);
+  },[play])
+
+  useEffect(() => {
     if (uncovered.length * 2 === numberOfBlocks) {
-      setBlockPair([]);
-      setUncovered([]);
       setEndGame(true);
     }
   }, [uncovered]);
@@ -64,20 +70,18 @@ const BoardToPlay = ({ numberOfBlocks }: BoardToPlayProps) => {
   return (
     <>
       <div className="game-board" id={boardSize}>
-        {endGame ? (
-          <p>WIN!!</p>
-        ) : (
-          <BlockGenerator
-            numberOfBlocks={numberOfBlocks}
-            uncovered={uncovered}
-            boardSize={boardSize}
-            handleBlockClick={(iconName, index) =>
-              handleBlockClick(iconName, index)
-            }
-            clickedBlock={clickedBlock}
-          />
-        )}
+        <BlockGenerator
+          numberOfBlocks={numberOfBlocks}
+          uncovered={uncovered}
+          boardSize={boardSize}
+          handleBlockClick={(iconName, index) =>
+            handleBlockClick(iconName, index)
+          }
+          clickedBlock={clickedBlock}
+          play={play}
+        />
       </div>
+        {endGame ? <Win /> : null}
     </>
   );
 };
