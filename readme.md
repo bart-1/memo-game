@@ -5,7 +5,7 @@
 
 ## Demo
 
-[a link](https://dziwnykot.pl/memo)
+[link](https://dziwnykot.pl/memo)
 
 ## About
 
