@@ -1,4 +1,3 @@
-import "./styles/Win.css";
 const Win = () => {
   return (
     <>

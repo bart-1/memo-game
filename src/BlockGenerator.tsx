@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { IconType, IconContext } from "react-icons";
 import { GameSize } from "./GameSet";
 import { gameIconPack, QuestionMark } from "./Iconpack";
-import "./styles/BlockGenerator.css";
 
 export type BlockObject = { id: number; name: string };
 
@@ -55,7 +54,7 @@ const BlockGenerator = ({
         key={index}
         onClick={() => handleBlockClick(icon.name, index)}>
         <IconContext.Provider
-          value={{ className: "game-block-icon", size: "6vw" }}>
+          value={{ className: "game-block-icon"}}>
           {clickedBlock === icon.name + index ||
           uncovered.find((element) => element.name === icon.name) ? (
             <Icon />

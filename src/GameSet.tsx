@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./styles/GameSet.css";
 export type GameSize = 16 | 24 | 48;
 
 interface GameSetProps {

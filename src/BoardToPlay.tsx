@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import BlockGenerator, { BlockObject } from "./BlockGenerator";
 import { GameSize } from "./GameSet";
-import "./styles/BoardToPlay.css";
 import Win from "./Win";
 
 interface BoardToPlayProps {
